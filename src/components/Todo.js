@@ -4,24 +4,26 @@ import './Todo.css';
 
 const Todo = (props) => {
     const {task, index, todoArray, setTodoArray} = props;
+
     const toggleComplete = (task) => {
-        const updatedTask = {...task, completed: !task.completed}
-        const updatedTasks = todoArray.map((item, i) => {
-            if (task ===i) {
-                task.complete = updatedTask;
-            } return task;
+        const updatedTask = {...task, complete: !task.complete};
+        const updatedTasks = todoArray.map((item) => {
+            if (task === item) {
+                item = updatedTask;
+            } return item;
     }); 
     setTodoArray(updatedTasks);
     };
+
     const handleDelete = () => {
         const filterTodoArray = todoArray.filter((task, i) => i !== index);
         setTodoArray(filterTodoArray);
     };
 
     return (
-        <Card className='task-card'>
-            <input type="checkbox" name="complete" id="complete" checked={task.complete} onChange={toggleComplete}/>
-            <h5>{task.text}</h5>
+        <Card className='taskcard'>
+            <input type="checkbox"  checked={task.complete} onChange={() => toggleComplete(task)}/>
+            <h5 className={task.complete ? 'completed' : ''}>{task.task}</h5>
             <Button className='deleteBtn' variant='primary' onClick={handleDelete}>Delete</Button>
         </Card>
     );

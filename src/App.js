@@ -6,24 +6,23 @@ import Todo from './components/Todo';
 
 function App() {
   const [task, setTask] = useState("");
-  const [completed, setCompleted] = useState(false);
   const [todoArray, setTodoArray ] = useState([]);
-
-  // const todoTask = {
-  //   text: task,
-  //   complete: false
-  // }
+  const todoTask = {
+    task: task,
+    complete: false,
+};
 
   return (
     <div className="App">
       <Header />
-      <Add todoArray={todoArray} setTodoArray={setTodoArray} />
+      <Add todoArray={todoArray} setTodoArray={setTodoArray} task={task} setTask={setTask} />
       <div className='todo-list'>
       {todoArray.map((task, index) => {
         return <Todo 
           key={index}
           index={index}
           task={task}
+          todoTask={todoTask}
           todoArray = {todoArray}
           setTodoArray = {setTodoArray}
           />

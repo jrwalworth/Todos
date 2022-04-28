@@ -4,12 +4,11 @@ import {useState} from 'react';
 import './Todo.css';
 
 const Add = (props) => {
-    const [task, setTask] = useState("");
-    const { todoArray, setTodoArray } = props;
+    const { todoArray, setTodoArray, task, setTask } = props;
     const handleSubmit = (e) => {
         e.preventDefault();
         const todoTask = {
-            text: task,
+            task: task,
             complete: false,
         };
         setTodoArray([...todoArray, todoTask]);
